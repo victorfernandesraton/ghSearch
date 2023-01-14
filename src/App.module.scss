@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  width: 66.666667%;
+  display: flex;
+  padding-top: 16px;
+
+  @media only screen and (max-width: 450px) {
+    width: 91.666667%;
+  }
+}

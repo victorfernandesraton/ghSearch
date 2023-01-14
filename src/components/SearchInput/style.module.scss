@@ -1,11 +1,33 @@
 @import '/src/theme.scss';
 
-.search {
-    height: 3rem;
-    box-sizing: border-box;
-    background: #FFFFFF;
 
-    @include brutalBorder(1px);
-    @include brutalBorderRight(3px);
-    @include brutalBorderBotton(3px);
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 0.5rem;
+    width: 100%;
+
+    .inpt {
+        width: 100%;
+        border: 0.1rem;
+        height: 3rem;
+        background: #FFFFFF;
+        @include brutalBorder(2px);
+    }
+
+
+    .btn {
+        height: 3rem;
+        background-color: $primary-color;
+        border-radius: 0.5rem;
+        @include brutalBorder(2px);
+        @include brutalBorderRight(4px);
+        @include brutalBorderBotton(4px);
+    }
+
+    .btn:hover {
+        background-color: #FFFFFF;
+        color: $primary-color;
+        border-color: $primary-color;
+    }
 }

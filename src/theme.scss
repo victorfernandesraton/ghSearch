@@ -11,19 +11,9 @@ $border-color-secondary: $primary-color;
 }
 
 @mixin brutalBorderRight($size) {
-
     border-right: $size solid $border-color-primary;
-
-    :hover {
-        border-color: $border-color-secondary;
-    }
 }
 
 @mixin brutalBorderBotton($size) {
-
     border-bottom: $size solid $border-color-primary;
-
-    :hover {
-        border-color: $border-color-secondary;
-    }
 }
