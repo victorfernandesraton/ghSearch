@@ -1,0 +1,11 @@
+@import '/src/theme.scss';
+
+.search {
+    height: 3rem;
+    box-sizing: border-box;
+    background: #FFFFFF;
+
+    @include brutalBorder(1px);
+    @include brutalBorderRight(3px);
+    @include brutalBorderBotton(3px);
+}
