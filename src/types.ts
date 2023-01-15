@@ -21,3 +21,20 @@ export type RepositoryType = {
 	languages: LanguagesType,
 	description?: string
 }
+
+export type UserInfoType = {
+	id: string;
+	email?: string;
+	login: string;
+	avatarUrl: string;
+	url: string;
+	starredRepositories: TotalCount;
+	followers: TotalCount;
+	following: TotalCount;
+	gistComments: TotalCount;
+	bio?: string;
+	company?: string;
+	name?: string;
+	location?: string;
+	repositories: TotalCount;
+};

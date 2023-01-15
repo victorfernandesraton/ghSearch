@@ -1,46 +1,44 @@
-import SearchInput from './components/searchInput'
+import { useLazyQuery } from '@apollo/client';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Helmet } from "react-helmet";
 
-import "./theme.scss"
-import styles from "./App.module.scss"
-import UserInfo from './components/userInfo'
-import RepositoryItem from './components/repositoryItem'
-import { useLazyQuery } from '@apollo/client'
-import { USER_QUERY } from './query/user'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDebounce } from './hooks/debounce'
-import { RepositoryType } from './types'
+import styles from "./App.module.scss";
+import Content from './components/content';
+import SearchInput from './components/searchInput';
+
+import { USER_QUERY } from './query/user';
+
+import "./theme.scss";
 
 
 function App() {
 
-	const [query, setQuery] = useState<string>("victorfernandesraton");
+	const [query, setQuery] = useState<string>();
 
 	const onChangeText = useCallback((text: string = "") => {
 		setQuery(text);
 	}, [])
 
-	const debounceText = useDebounce(query, 500)
 
-	const [fetchUserInfoQuery, { data: userInfoData, loading: loadingUserInfo, error, called }] = useLazyQuery(USER_QUERY)
+	const [fetchUserInfoQuery, { data: userInfoData, loading: loadingUserInfo, error }] = useLazyQuery(USER_QUERY)
 
 	const userInfo = useMemo(() => userInfoData?.search?.nodes?.[0], [userInfoData])
 	const repositories = useMemo(() => userInfo?.repositories?.edges ?? [], [userInfo])
 
 	const onSubmitQuery = useCallback((query?: string) => {
-		if (!loadingUserInfo && debounceText && (query?.length && query?.length > 2)) {
+		if (!loadingUserInfo && (query?.length && query?.length > 2)) {
 			fetchUserInfoQuery({
 				variables: {
 					username: query
 				}
 			})
 		}
-	}, [loadingUserInfo, debounceText])
-
-
+	}, [loadingUserInfo])
 
 	useEffect(() => {
-		onSubmitQuery(query)
+		setTimeout(() => {
+			onSubmitQuery(query)
+		}, 1000);
 	}, [query])
 
 	return (
@@ -55,18 +53,17 @@ function App() {
 				<div className={styles.container}>
 					<SearchInput
 						onSubmit={() => {
+							console.log("teste")
 							onSubmitQuery(query)
 						}}
 						onChange={onChangeText}
 					/>
-					{called && userInfo && (
-						<UserInfo
-							{...{ ...userInfo }}
-						/>
-					)}
-					{repositories.map((item: { node: RepositoryType }) =>
-						<RepositoryItem key={item.node.id} {...{ ...item.node }} />
-					)}
+					<Content
+						called={query?.length}
+						loading={loadingUserInfo}
+						error={error} repositories={repositories}
+						user={userInfo}
+					/>
 				</div>
 			</main>
 		</div>

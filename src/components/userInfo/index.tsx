@@ -1,22 +1,8 @@
-import { TotalCount } from "../../types";
+import { UserInfoType } from "../../types";
 import MetricsItem from "./metricsItem";
 import styles from './style.module.scss'
-type Props = {
-	id: string;
-	email?: string;
-	login: string;
-	avatarUrl: string;
-	url: string;
-	starredRepositories: TotalCount;
-	followers: TotalCount;
-	following: TotalCount;
-	gistComments: TotalCount;
-	bio?: string;
-	company?: string;
-	name?: string;
-	location?: string;
-	repositories: TotalCount;
-};
+
+type Props = UserInfoType
 
 function UserInfo(props: Props) {
 
