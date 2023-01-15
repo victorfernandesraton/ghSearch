@@ -1,28 +1,7 @@
-import { TotalCount } from '../../types'
+import { RepositoryType, TotalCount } from '../../types'
 import MetricsItem from '../userInfo/metricsItem'
 import styles from './style.module.scss'
 
-type LanguageNode = {
-	node: {
-
-		id: string
-		name: string
-	}
-}
-type LanguagesType = {
-	edges: LanguageNode[]
-} & TotalCount
-
-type Props = {
-	id: string,
-	name: string,
-	url: string
-	watchers: TotalCount
-	stargazers: TotalCount
-	issues: TotalCount,
-	languages: LanguagesType,
-	description?: string
-}
 
 
 
@@ -35,7 +14,7 @@ function RepositoryItem({
 	watchers,
 	languages,
 	issues
-}: Props) {
+}: RepositoryType) {
 	const metrics = [
 		{ title: "Stargazers", total: stargazers.totalCount },
 		{ title: "Watchers", total: watchers.totalCount },

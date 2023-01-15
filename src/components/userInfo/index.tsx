@@ -30,7 +30,12 @@ function UserInfo(props: Props) {
 	return (
 		<article className={styles.container}>
 			<div className={styles.info}>
-				<img src={props.avatarUrl} />
+				<div className={styles.imgContainter}>
+
+					<img
+						alt={`image for ${props.name ?? props.login}`}
+						src={props.avatarUrl} />
+				</div>
 				<div className={styles.description}>
 					<h1>{props.login}</h1>
 					<p>{props.bio}</p>

@@ -6,6 +6,7 @@
 	padding: 16px;
 	margin-bottom: 8px;
 	@include brutalBorder();
+	line-height: 2rem;
 
 	a {
 		font-weight: bold;

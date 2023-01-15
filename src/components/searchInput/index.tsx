@@ -2,10 +2,12 @@ import styles from "./style.module.scss"
 
 type Props = {
 	onChange: (value: string) => void
+	onSubmit: () => void
 }
 
 function SearchInput({
 	onChange,
+	onSubmit
 }: Props) {
 	return (
 		<div className={styles.container}>
@@ -13,8 +15,11 @@ function SearchInput({
 				onChange={(e) => {
 					onChange(e.target.value)
 				}}
+				placeholder="Please type text to select"
 			/>
-			<button type="submit"className={styles.btn}>Search</button>
+			<button
+				onClick={() => { onSubmit() }}
+				type="submit" className={styles.btn}>Search</button>
 		</div>
 	)
 }
