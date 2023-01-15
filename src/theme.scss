@@ -2,18 +2,13 @@ $primary-color: #06b6d4;
 $border-color-primary: #000;
 $border-color-secondary: $primary-color;
 
-@mixin brutalBorder($size) {
-    border: $size solid $border-color-primary;
+@mixin brutalBorder {
+	border: 0.1rem solid $border-color-primary;
+	border-right: 0.3rem solid $border-color-primary;
+	border-bottom: 0.3rem solid $border-color-primary;
+	border-radius: 0.5rem;
 
-    :hover {
-        border-color: $border-color-secondary;
-    }
-}
-
-@mixin brutalBorderRight($size) {
-    border-right: $size solid $border-color-primary;
-}
-
-@mixin brutalBorderBotton($size) {
-    border-bottom: $size solid $border-color-primary;
+	:hover {
+		border-color: $border-color-secondary;
+	}
 }
