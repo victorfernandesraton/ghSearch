@@ -1,0 +1,46 @@
+@import '/src/theme.scss';
+
+
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 0;
+	padding: 16px;
+	gap: 1rem;
+	@include brutalBorder();
+
+	.info {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+
+
+		.description {
+			display: flex;
+			flex-direction: column;
+
+			span {
+				color: $primary-color;
+				font-weight: bold;
+			}
+		}
+
+		img {
+			max-width: 13.3337%;
+			@include brutalBorder();
+		}
+	}
+
+	.metrics {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		font-size: medium;
+
+		span {
+			color: $primary-color;
+			font-weight: bold;
+		}
+	}
+}

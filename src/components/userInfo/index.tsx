@@ -1,6 +1,7 @@
 import { TotalCount } from "../../types";
-
+import styles from './style.module.scss'
 type Props = {
+	loading: boolean
 	id: string;
 	email: string;
 	login: string;
@@ -21,17 +22,26 @@ type Props = {
 };
 
 function UserInfo(props: Props) {
+	if (props.loading) {
+		return <h1>Loading...</h1>
+	}
 	return (
-		<article>
-			<img src={props.avatarUrl} />
-			<h1>{props.login}</h1>
-			<p>{props.bio}</p>
-			{props.company && (
-				<p>{props.company}</p>
-			)}
-			<p>Stars <span>{props.starredRepositories.totalCount}</span></p>
-			<p>Followers <span>{props.followers.totalCount}</span></p>
-			<p>following <span>{props.following.totalCount}</span></p>
+		<article className={styles.container}>
+			<div className={styles.info}>
+				<img src={props.avatarUrl} />
+				<div className={styles.description}>
+					<h1>{props.login}</h1>
+					<p>{props.bio}</p>
+					{props.company && (
+						<p>Work in: <span>{props.company}</span></p>
+					)}
+				</div>
+			</div>
+			<div className={styles.metrics}>
+				<p>Stars: <span>{props.starredRepositories.totalCount}</span></p>
+				<p>Followers: <span>{props.followers.totalCount}</span></p>
+				<p>following: <span>{props.following.totalCount}</span></p>
+			</div>
 		</article>
 	)
 }
