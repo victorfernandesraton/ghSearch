@@ -2,7 +2,6 @@ import { TotalCount } from "../../types";
 import MetricsItem from "./metricsItem";
 import styles from './style.module.scss'
 type Props = {
-	loading: boolean
 	id: string;
 	email?: string;
 	login: string;
