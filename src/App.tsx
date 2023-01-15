@@ -20,10 +20,16 @@ function App() {
 	}, [])
 
 
-	const [fetchUserInfoQuery, { data: userInfoData, loading: loadingUserInfo, error }] = useLazyQuery(USER_QUERY)
+	const [fetchUserInfoQuery, { data: userInfoData, loading: loadingUserInfo, error, called: calledUserInfo }] = useLazyQuery(USER_QUERY)
 
 	const userInfo = useMemo(() => userInfoData?.search?.nodes?.[0], [userInfoData])
 	const repositories = useMemo(() => userInfo?.repositories?.edges ?? [], [userInfo])
+	const called = useMemo(() => {
+		if (query && query.length == 0) {
+			return false;
+		}
+		return calledUserInfo
+	}, [query, calledUserInfo])
 
 	const onSubmitQuery = useCallback((query?: string) => {
 		if (!loadingUserInfo && (query?.length && query?.length > 2)) {
@@ -59,7 +65,7 @@ function App() {
 						onChange={onChangeText}
 					/>
 					<Content
-						called={query?.length}
+						called={called}
 						loading={loadingUserInfo}
 						error={error} repositories={repositories}
 						user={userInfo}
