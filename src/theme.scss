@@ -12,3 +12,19 @@ $border-color-secondary: $primary-color;
 		border-color: $border-color-secondary;
 	}
 }
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@mixin fadeIn($time: 1.5s) {
+	animation: fadeInAnimation ease $time;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}

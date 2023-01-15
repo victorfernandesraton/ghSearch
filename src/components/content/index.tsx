@@ -4,7 +4,7 @@ import Feedback from '../feedback'
 import RepositoryItem from '../repositoryItem'
 import UserInfo from '../userInfo'
 import { switchContent } from './utils'
-
+import styles from './style.module.scss'
 type Props = {
 	called?: boolean
 	loading: boolean
@@ -42,7 +42,7 @@ function Content({
 	}
 
 	return (
-		<div>
+		<div className={styles.container}>
 			{called && user && (
 				<UserInfo
 					{...{ ...user }}

@@ -1,0 +1,5 @@
+@import "/src/theme.scss";
+
+.container {
+	@include fadeIn(1.5s);
+}

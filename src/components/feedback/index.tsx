@@ -1,5 +1,4 @@
-import React from 'react'
-
+import styles from './style.module.scss'
 type Props = {
 	title?: string
 	message: string
@@ -7,11 +6,11 @@ type Props = {
 
 function Feedback({ message, title }: Props) {
 	return (
-		<div>
+		<div className={styles.container}>
 			{title && (
-				<h1>{title}</h1>
+				<h1 className={styles.title}>{title}</h1>
 			)}
-			<article>
+			<article className={styles.message}>
 				{message}
 			</article>
 		</div>
