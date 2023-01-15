@@ -8,19 +8,14 @@ query searchUser($username: String!) {
         id
         email
         bio
-        avatarUrl(size: 320)
+        avatarUrl(size: 120)
         company
-        createdAt
-        isBountyHunter
         name
 				login
-        websiteUrl
         url
-        twitterUsername
         starredRepositories {
           totalCount
         }
-				bioHTML
         followers {
           totalCount
         }
@@ -33,21 +28,12 @@ query searchUser($username: String!) {
         location
         repositories(first: 50, orderBy: {field: CREATED_AT, direction: DESC}) {
           totalCount
-          pageInfo {
-            hasPreviousPage
-            hasNextPage
-            endCursor
-            startCursor
-          }
+
           edges {
             node {
-              createdAt
               id
               name
-              nameWithOwner
-              resourcePath
               url
-              updatedAt
               watchers {
                 totalCount
               }
